@@ -1,0 +1,84 @@
+<div class="table-container">
+    <!-- Table Header Section -->
+    <div class="table-header">
+      <h2>Lost Materials List</h2>
+     
+    </div>
+  
+    <!-- Table Section -->
+    <nz-table class="lost-items-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Item Name</th>
+          <th>Category</th>
+          <th>Last Seen</th>
+          <th>Reported By</th>
+          <th>Value (₹)</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Row 1 -->
+        <tr>
+          <td>1</td>
+          <td>Dell Laptop Charger</td>
+          <td>Electronics</td>
+          <td>May 15, 2023</td>
+          <td>John Doe</td>
+          <td>3,500.00</td>
+          <td><nz-tag nzColor="orange">Investigation</nz-tag></td>
+          <td class="action-buttons">
+            <button nz-button nzType="link">
+              <span nz-icon nzType="eye" nzTheme="outline"></span> View
+            </button>
+            <nz-divider nzType="vertical"></nz-divider>
+            <button nz-button nzType="link" nzDanger>
+              <span nz-icon nzType="delete" nzTheme="outline"></span> Delete
+            </button>
+          </td>
+        </tr>
+        
+        <!-- Row 2 -->
+        <tr>
+          <td>2</td>
+          <td>Wireless Mouse</td>
+          <td>Peripheral</td>
+          <td>Jun 20, 2023</td>
+          <td>Jane Smith</td>
+          <td>1,200.00</td>
+          <td><nz-tag nzColor="red">Not Found</nz-tag></td>
+          <td class="action-buttons">
+            <button nz-button nzType="link">
+              <span nz-icon nzType="eye" nzTheme="outline"></span> View
+            </button>
+            <nz-divider nzType="vertical"></nz-divider>
+            <button nz-button nzType="link" nzDanger>
+              <span nz-icon nzType="delete" nzTheme="outline"></span> Delete
+            </button>
+          </td>
+        </tr>
+        
+        <!-- Row 3 -->
+        <tr>
+          <td>3</td>
+          <td>Projector Remote</td>
+          <td>Office Equipment</td>
+          <td>Jul 5, 2023</td>
+          <td>Mike Johnson</td>
+          <td>800.00</td>
+          <td><nz-tag nzColor="green">Recovered</nz-tag></td>
+          <td class="action-buttons">
+            <button nz-button nzType="link">
+              <span nz-icon nzType="eye" nzTheme="outline"></span> View
+            </button>
+            <nz-divider nzType="vertical"></nz-divider>
+            <button nz-button nzType="link" nzDanger>
+              <span nz-icon nzType="delete" nzTheme="outline"></span> Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </div>

@@ -1,0 +1,26 @@
+<div class="table-container">
+  <div class="table-header">
+    <h2>Alarm History</h2>
+    <div class="header-actions">
+      <button nz-button nzType="default" class="reset-btn">
+        Reset Filters
+      </button>
+    </div>
+  </div>
+  <nz-table #basicTable [nzData]="data" nzTableLayout="fixed">
+    <thead>
+      <tr>
+        <th>Alarm ID</th>
+        <th>Alarm Type</th>
+        <th>Equipment</th>
+        <th>Location</th>
+        <th>Triggered At</th>
+        <th>Cleared At</th>
+        <th>Duration</th>
+        <th>Severity</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </nz-table>
+</div>

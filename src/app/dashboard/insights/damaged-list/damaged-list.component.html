@@ -1,0 +1,22 @@
+<div class="table-container">
+  <div class="table-header">
+    <h2>Damaged Items List</h2>
+    <div class="header-actions">
+      <button nz-button nzType="default" class="reset-btn">Reset</button>
+    </div>
+  </div>
+  <nz-table #basicTable [nzData]="data" nzTableLayout="fixed">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Item Name</th>
+        <th>Damage Type</th>
+        <th>Reported By</th>
+        <th>Date Reported</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </nz-table>
+</div>

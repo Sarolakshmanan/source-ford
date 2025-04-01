@@ -1,0 +1,46 @@
+.box-border {
+  border: 1px solid grey;
+  border-radius: 5px;
+  background-color: #c0c4d0;
+  opacity: 0.8;
+  background-image: linear-gradient(#d0d0d0 2px, transparent 2px),
+    linear-gradient(90deg, #d0d0d0 2px, transparent 2px),
+    linear-gradient(#d0d0d0 1px, transparent 1px),
+    linear-gradient(90deg, #d0d0d0 1px, #c0c4d0 1px);
+  background-size: 50px 50px, 50px 50px, 10px 10px, 10px 10px;
+  background-position: -2px -2px, -2px -2px, -1px -1px, -1px -1px;
+  height: 10%;
+  overflow: auto;
+}
+
+.inner-content {
+  height: 60vh;
+}
+
+.factory-icon {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background: #fff;
+  box-shadow: 4px 4px 10px;
+  width: 40px;
+  height: 40px;
+  margin: 0 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.itemsAlign {
+  display: flex;
+  margin-left: 20px;
+}
+
+.itemsAlign .factory-icon .factory-img {
+  height: 25px;
+  width: 25px;
+  cursor: grab;
+}
+
+.spacing-align {
+  margin-bottom: 10px;
+}

@@ -1,0 +1,43 @@
+.logo-sell {
+  width: 10%;
+  margin-left: 45%;
+}
+
+.text-spacing {
+  text-align: center;
+}
+
+.new-alignment {
+  margin-top: 5px;
+}
+
+.text-margin {
+  margin-bottom: 10px;
+}
+
+.input-borderless {
+  text-align: center;
+}
+
+.env-look {
+  width: 100%;
+}
+
+.change-password {
+  float: right;
+  margin-right: 10%;
+}
+
+.proceed-align {
+  float: right;
+}
+
+::ng-deep .ant-modal-footer {
+  padding: 0px !important;
+}
+
+.otp-verify-button {
+  width: 100%;
+    position: relative;
+    right: 20px;
+}

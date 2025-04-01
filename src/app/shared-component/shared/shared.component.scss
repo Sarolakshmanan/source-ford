@@ -1,0 +1,60 @@
+nz-content {
+  margin: 0 16px;
+  height: 50vh !important;
+}
+
+nz-breadcrumb {
+  margin: 16px 0;
+}
+
+.side-menu-image {
+  width: 25px;
+}
+
+.inner-side-menu {
+  margin-right: 10px;
+}
+
+.nz-slider-info {
+  min-width: 200px !important;
+  width: 240px !important;
+  flex: 0 0 240px !important;
+  max-width: 250px !important;
+}
+
+.parent-icon {
+  position: absolute;
+  margin-top: 10px;
+}
+
+.inner-content {
+  margin: 16px 0;
+  padding: 24px;
+  height: auto;
+  max-height: 100%;
+  overflow: auto;
+}
+
+.logo {
+  height: 32px;
+  background: rgba(255, 255, 255, 0.2); // comment for logo purpose
+  margin: 16px;
+  // background-image: url("/assets/system_image/logo.png");
+  background-size: 100% 100%;
+}
+
+.mini-logo {
+  height: 32px;
+  background: rgba(255, 255, 255, 0.2); // comment for logo purpose
+  margin: 16px;
+  // background-image: url("/assets/system_image/logo_mini_white.png");
+  background-size: 100% 100%;
+}
+
+.content-scroll {
+  overflow-x: scroll;
+}
+
+.slider-height {
+  min-height: 100vh !important;
+}

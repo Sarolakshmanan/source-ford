@@ -1,0 +1,196 @@
+<div nz-row>
+  <nz-page-header-title>Role Config</nz-page-header-title>
+</div>
+<ng-template #indicatorTemplate
+  ><img class="spin-logo" src="assets/system_image/process.gif" />
+</ng-template>
+<nz-spin
+  [nzSpinning]="loader"
+  [nzIndicator]="indicatorTemplate"
+  nzTip="Loading..."
+>
+  <div nz-row>
+    <div nz-col nzSpan="24">
+      <button
+        nz-button
+        class="button-align"
+        (click)="toggleEnv()"
+        nzType="primary"
+        [attr.disabled]="access_type"
+      >
+        {{ toggleEventCreate ? "Back to Role Config" : "Create Role Config" }}
+      </button>
+      <input
+        class="search-box"
+        nz-input
+        *ngIf="!toggleEventCreate"
+        placeholder="Search"
+        [(ngModel)]="searchText"
+      />
+    </div>
+  </div>
+  <div nz-row class="table-spaces" *ngIf="!toggleEventCreate">
+    <nz-table #basicTable [nzData]="role_data" nzTableLayout="fixed">
+      <thead>
+        <tr>
+          <th *ngFor="let column of listOfColumn">
+            {{ column }}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of role_data">
+          <td>
+            <ng-container *ngIf="access_type == false">
+              <span
+                class="icon-spaces first-icon-space"
+                nz-icon
+                title="Edit"
+                nzType="edit"
+                nzTheme="outline"
+                (click)="editData(data)"
+              ></span>
+              <span
+                nz-icon
+                class="icon-spaces first-icon-space"
+                title="Active/Inactive"
+                (click)="inDelete(data, '')"
+                nzType="exclamation"
+                nzTheme="outline"
+              ></span>
+              <span
+                nz-icon
+                class="icon-spaces first-icon-space"
+                title="Delete"
+                (click)="inDelete(data, 'Delete')"
+                nzType="delete"
+                nzTheme="outline"
+              ></span>
+            </ng-container>
+          </td>
+          <td>{{ data.role_name }}</td>
+          <td>{{ data.status }}</td>
+          <td>{{ data.created_by }}</td>
+          <td>{{ data.created_date }}</td>
+          <td>{{ data.last_updated_by }}</td>
+          <td>{{ data.last_updated_date }}</td>
+        </tr>
+      </tbody>
+    </nz-table>
+  </div>
+  <div class="table-spaces box-border" *ngIf="toggleEventCreate">
+    <form nz-form [formGroup]="validateForm">
+      <div nz-row>
+        <div nz-col nzSpan="4">
+          <h3>Role Name</h3>
+        </div>
+        <div nz-col nzSpan="6">
+          <nz-form-item>
+            <nz-form-control nzErrorTip="Please input Role Name!">
+              <input
+                [attr.disabled]="isEdit ? true : false"
+                formControlName="role_name"
+                nz-input
+                placeholder="Role Name"
+              />
+            </nz-form-control>
+          </nz-form-item>
+        </div>
+        <div nz-col nzSpan="4"></div>
+        <div nz-col nzSpan="4">
+          <h3>Status</h3>
+        </div>
+        <div nz-col nzSpan="6">
+          <nz-select
+            formControlName="status"
+            class="select-width"
+            [nzDisabled]="!isEdit ? true : false"
+          >
+            <nz-option nzValue="Active" nzLabel="Active"></nz-option>
+            <nz-option nzValue="Inactive" nzLabel="Inactive"></nz-option>
+          </nz-select>
+        </div>
+      </div>
+    </form>
+    <div nz-row class="box-border internal-box">
+      <nz-input-group class="search" [nzSuffix]="suffixIcon">
+        <input
+          type="text"
+          nz-input
+          placeholder="Search"
+          [(ngModel)]="searchValue"
+        />
+      </nz-input-group>
+      <ng-template #suffixIcon>
+        <span nz-icon nzType="search"></span>
+      </ng-template>
+      <nz-tree
+        nzMultiple
+        [nzData]="menu_info"
+        [nzSearchValue]="searchValue"
+        (nzClick)="nzEvent($event)"
+        (nzExpandChange)="nzEvent($event)"
+        (nzSearchValueChange)="nzEvent($event)"
+        [nzTreeTemplate]="content"
+      >
+        <ng-template #content let-menu_info let-origin="origin">
+          <label
+            *ngIf="origin.is_parent"
+            [nzIndeterminate]="nodeInfo[origin['title']]['iter_read']"
+            [(ngModel)]="nodeInfo[origin['title']]['read']"
+            nz-checkbox
+            [nzDisabled]="nodeInfo[origin['title']]['write']"
+            (ngModelChange)="updateAllChecked('read', origin.title)"
+          ></label>
+          <label
+            *ngIf="origin.is_parent"
+            [nzIndeterminate]="nodeInfo[origin['title']]['iter_write']"
+            [(ngModel)]="nodeInfo[origin['title']]['write']"
+            nz-checkbox
+            (ngModelChange)="updateAllChecked('write', origin.title)"
+          ></label>
+          <label
+            [(ngModel)]="nodeInfo[origin['title']]['read']"
+            *ngIf="origin.is_child"
+            nz-checkbox
+            [nzDisabled]="nodeInfo[origin['title']]['write']"
+            (ngModelChange)="updateSingleChecked('read', origin.title)"
+          >
+            - Read</label
+          >
+          <label
+            [(ngModel)]="nodeInfo[origin['title']]['write']"
+            *ngIf="origin.is_child"
+            nz-checkbox
+            (ngModelChange)="updateSingleChecked('write', origin.title)"
+          >
+            - Write</label
+          >
+          {{ menu_info.title }}
+        </ng-template>
+      </nz-tree>
+    </div>
+    <div nz-row>
+      <div nz-col nzSpan="24">
+        <button
+          (click)="submitForm()"
+          nz-button
+          *ngIf="!isEdit"
+          class="submit-btn"
+          nzType="primary"
+        >
+          Submit
+        </button>
+        <button
+          (click)="UpdateForm('external')"
+          nz-button
+          *ngIf="isEdit"
+          class="submit-btn"
+          nzType="primary"
+        >
+          Update
+        </button>
+      </div>
+    </div>
+  </div>
+</nz-spin>

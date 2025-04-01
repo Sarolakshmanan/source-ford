@@ -1,0 +1,32 @@
+<div class="spacing-align" nz-row>
+  <div nz-col class="itemsAlign" nzSpan="6">
+    <span *ngFor="let factory of factoryList" class="factory-icon">
+      <img
+        *ngIf="factory.type === 'image'"
+        class="factory-img"
+        data-toggle="tooltip"
+        data-placement="bottom"
+        title="{{ factory.name }}"
+        src="{{ factory.img }}"
+        draggable="true"
+        (dragstart)="onNodeDrag($event, factory)"
+        (click)="onNodeClick($event, factory)"
+        alt="{{ factory.category }}"
+      />
+    </span>
+  </div>
+  <div nz-col nzSpan="6"></div>
+</div>
+<div nz-row>
+  <div nz-col class="box-border" nzSpan="24">
+    <div class="inner-content">
+      <app-structure-node-parent
+        [nodeParentId]="canvasId"
+        #workFlowCreator
+        (newTabOpen)="openingUnits($event)"
+      ></app-structure-node-parent>
+    </div>
+  </div>
+</div>
+<!-- pop for more units and factory factoryList -->
+<ng-template #factorypopOver> </ng-template>

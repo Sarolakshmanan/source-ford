@@ -1,0 +1,21 @@
+.customer-range-table {
+    th:nth-child(5), th:nth-child(6) { // Purchase Range and Last Order columns
+      text-align: center;
+    }
+    
+    td:nth-child(5) { // Purchase Range column
+      font-weight: 500;
+      color: #1890ff;
+      text-align: center;
+    }
+    
+    td:nth-child(6) { // Last Order column
+      text-align: center;
+    }
+    
+    .ant-tag-blue {
+      background-color: #e6f7ff;
+      border-color: #91d5ff;
+      color: #1890ff;
+    }
+  }

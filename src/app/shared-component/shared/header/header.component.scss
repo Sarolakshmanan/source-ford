@@ -1,0 +1,71 @@
+nz-header {
+  background: #fff;
+  padding: 0;
+}
+
+.trigger {
+  font-size: 18px;
+  line-height: 64px;
+  padding: 0 24px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.env-look {
+  width: 80%;
+}
+
+.notification-alert {
+  float: right;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.notification-alert-space {
+  float: right;
+  cursor: pointer;
+  position: relative;
+  top: 28%;
+  margin-right: 10px;
+}
+
+.dashboard-alert {
+  float: right;
+  position: relative;
+  top: 28%;
+  margin-right: 10px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.profile-img {
+  width: 40px;
+  height: 60%;
+  margin-right: 10px;
+  border-radius: 50%;
+  float: right;
+  position: relative;
+  top: 10px;
+}
+
+.profile-name {
+  float: right;
+  font-size: 15px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.icon-cursor {
+  cursor: pointer;
+}
+
+.trigger:hover {
+  color: #1890ff;
+}
+
+::ng-deep .ant-drawer-footer {
+  text-align: center !important;
+  color: #025f97 !important;
+  font-size: medium !important;
+  cursor: pointer !important;
+}

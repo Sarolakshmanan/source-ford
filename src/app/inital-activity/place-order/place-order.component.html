@@ -1,0 +1,57 @@
+<div nz-col nzSpan="24" class="place-order-graywhitescale">
+  <div nz-col nzSpan="1"></div>
+  <div nz-col nzSpan="2">
+    <i nz-icon nzType="reconciliation" class="order-receipt-icon" nz-tooltip nzTooltipPlacement="topCenter"
+      nzTheme="outline"></i>
+  </div>
+  <div nz-col nzSpan="18" class="customer-name-pos">Trackpad Items</div>
+  <div nz-col nzSpan="2">
+    <i nz-icon nzType="edit" class="order-receipt-edit" nz-tooltip nzTooltipPlacement="topCenter" nzTheme="outline"></i>
+  </div>
+  <div nz-col nzSpan="1"></div>
+</div>
+<div class="place-order-container">
+  <div *ngIf="!selectedProduct || selectedProduct.length == 0" class="no-item-selected">
+    No items selected
+  </div>
+  <div class="order-container" *ngIf="selectedProduct.length >= 1">
+    <div class="order-item">
+      <img [src]="selectedProduct[0].image" [alt]="selectedProduct[0].name" class="product-image" />
+      <div class="order-details">
+        <h3>{{ selectedProduct[0].name }}</h3>
+        <p class="price">{{ selectedProduct[0].price | currency }}</p>
+  
+        <div class="quantity-container">
+          <button class="qty-btn" (click)="decreaseQty()" style="padding: 3px 11px;" [disabled]="selectedProduct[0].quantity <= 1">-</button>
+          <span>{{ selectedProduct[0].quantity }}</span>
+          <button class="qty-btn" [disabled]="selectedProduct[0].quantity <= 1" (click)="increaseQty()">+</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="spacer"></div>
+
+  <div class="wave-divider"></div>
+
+  <div class="summary">
+    <div class="summary-item">
+      <span class="label">Subtotal</span>
+      <span class="value">$ 0.00</span>
+    </div>
+    <div class="summary-item">
+      <span class="label">Tax 10%</span>
+      <span class="value">$ 0.00</span>
+    </div>
+    
+    <div class="dotted-line"></div>
+    
+    <div class="summary-total">
+      <span class="label">TOTAL</span>
+      <span class="total-value">$ 0.00</span>
+    </div>
+  </div>
+</div>
+<button nz-button nz-col nzSpan="24" class="place-order-graywhitescale-botton" nzType="primary">
+  Place Order
+</button>

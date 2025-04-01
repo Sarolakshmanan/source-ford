@@ -1,0 +1,30 @@
+.inline-text {
+  border-bottom: 1px solid transparent;
+  cursor: text;
+  text-align: center;
+}
+.inline-input {
+  background-color: transparent;
+  border: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  text-align: center;
+}
+.inline-input:focus {
+  border: none;
+  outline: none;
+  border-bottom: 1px solid;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}

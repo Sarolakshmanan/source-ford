@@ -1,0 +1,267 @@
+/* CSS Styles */
+.dashboard-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    padding: 20px;
+    background: #ffffff;
+    color: #000000;
+    overflow: hidden;
+}
+
+.main-content {
+    flex-grow: 1;
+    padding: 0px 40px;
+    position: relative;
+    background-color: #fff;
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    height: 100%;
+}
+
+.left-column,
+.center-column,
+.right-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.center-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.greeting {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+@media screen and (min-width: 1320px) {
+
+    .greeting {
+        font-size: 3rem;
+    }
+}
+
+.greeting .hello {
+    color: #3f3f3f;
+    display: block;
+}
+
+.greeting .name {
+    color: #1890ff;
+    display: block;
+}
+
+.location {
+    display: flex;
+    align-items: center;
+    background: transparent;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    color: #7c7c7c;
+    padding: 8px;
+    border-radius: 5px;
+}
+
+.clock-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #ffffff;
+}
+
+.clock {
+    position: relative;
+    width: 250px;
+    height: 250px;
+    background-color: #fff;
+    border-radius: 50%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.temperature {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #333333;
+    font-size: 1.1rem;
+    // font-weight: bold;
+    // font-family: 'Arial', sans-serif;
+    z-index: 2;
+}
+
+.clock-face {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 3px solid #03A9F4;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ffffff, #f7f7f7);
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.hand {
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    transform-origin: bottom;
+    background-color: #333;
+    transition: transform 0.5s ease-in-out;
+}
+
+.hour-hand {
+    width: 6px;
+    height: 25%;
+    margin-left: -3px;
+    background-color: #009688;
+}
+
+.minute-hand {
+    width: 4px;
+    height: 35%;
+    margin-left: -2px;
+    background-color: #8BC34A;
+}
+
+.second-hand {
+    width: 2px;
+    height: 40%;
+    margin-left: -1px;
+    background-color: #FFEB3B;
+    transition: transform 0.1s linear;
+}
+
+.central-dot {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    background-color: #333;
+    border-radius: 50%;
+    z-index: 10;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.hand:hover {
+    transform: scale(1.1);
+}
+
+.clock-face:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.notifications-card {
+    background-color: transparent;
+    color: #7c7c7c;
+    border: none;
+    text-align: end;
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    justify-content: end;
+}
+
+.card-header .anticon {
+    margin-right: 10px;
+    color: #ff4d4f;
+}
+
+.notifications-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.notifications-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.notifications-list li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.notification-icon {
+    font-size: 20px;
+    margin-right: 15px;
+    color: #ff4d4f;
+}
+
+.notification-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.notification-title {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.notification-description {
+    font-size: 12px;
+    color: #888;
+}
+
+.sidebar {
+    width: 80px;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+}
+
+.sidebar-button {
+    width: 100%;
+    height: 74px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    color: #1890ff;
+    border: none;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border-radius: 100px;
+    padding: 0px !important;
+}
+
+.sidebar-button:hover {
+    background-color: #f1f1f1;
+}
+
+.sidebar-button .anticon {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.button-text {
+    color: #1890ff;
+    font-size: 12px;
+    opacity: 1;
+    transition: opacity 0.3s;
+}

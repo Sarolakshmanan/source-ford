@@ -1,0 +1,32 @@
+.alarm-history-table {
+    th:nth-child(5), 
+    th:nth-child(6),
+    th:nth-child(7) { // Time-related columns
+      text-align: center;
+    }
+    
+    td:nth-child(5),
+    td:nth-child(6),
+    td:nth-child(7) { // Time-related data
+      text-align: center;
+      font-family: monospace;
+    }
+    
+    .ant-tag-red {
+      background-color: #fff1f0;
+      border-color: #ffa39e;
+      color: #f5222d;
+    }
+    
+    .ant-tag-orange {
+      background-color: #fff7e6;
+      border-color: #ffd591;
+      color: #fa8c16;
+    }
+    
+    .ant-tag-yellow {
+      background-color: #feffe6;
+      border-color: #fffb8f;
+      color: #d4b106;
+    }
+  }

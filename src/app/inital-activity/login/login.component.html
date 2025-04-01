@@ -1,0 +1,101 @@
+<div #login nz-row>
+  <div class="ant-co-height" nz-col nzFlex="5">
+    <img
+      class="animation-img"
+      src="/assets/system_image/login-animation.jpeg"
+      alt="Logo"
+    />
+  </div>
+  <div class="ant-co-height login-background" nz-col nzFlex="3">
+    <div class="login-top-align" nz-row>
+      <div nz-col nzSpan="24"></div>
+    </div>
+    <div nz-row>
+      <div nz-col nzSpan="24">
+        <div class="login-topic" nzspan="6">
+          <h4>Hello !..</h4>
+          <h4>
+            Connect to<span
+              ><img
+                class="login-area"
+                src="/assets/system_image/logo.png"
+                alt="Logo"
+              />
+              DigiRack</span
+            >
+          </h4>
+        </div>
+      </div>
+    </div>
+    <div nz-row>
+      <div nz-col class="login-topic" nzSpan="24">
+        <form nz-form [formGroup]="validateForm">
+          <nz-form-control
+            class="login-spacing"
+            [nzSm]="24"
+            [nzXs]="24"
+            nzErrorTip="The input is not valid E-mail!"
+          >
+            <input
+              class="email-text"
+              formControlName="email"
+              id="email"
+              nz-input
+              type="text"
+              placeholder="Email"
+            />
+          </nz-form-control>
+          <nz-form-control
+            class="login-spacing"
+            [nzSm]="24"
+            [nzXs]="24"
+            nzErrorTip="Please fill the password!"
+          >
+            <input
+              class="email-text"
+              formControlName="password"
+              id="password"
+              nz-input
+              type="password"
+              placeholder="password"
+            />
+          </nz-form-control>
+        </form>
+      </div>
+    </div>
+    <div nz-row>
+      <div nz-col class="login-topic" nzSpan="12">
+        <a (click)="activateRegister()">Register</a>
+      </div>
+      <div nz-col class="login-topic forgot-placing" nzSpan="12">
+        <a>Forgot password ?</a>
+      </div>
+    </div>
+    <div nz-row>
+      <div nz-col class="login-topic" nzSpan="24">
+        <button
+          nz-button
+          (click)="submitForm()"
+          [nzLoading]="isEmailPassword"
+          nzType="primary"
+        >
+          Login
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--
+  calling the security config if the authentication success
+-->
+<app-otp-config
+  (logoutReset)="logoutReset($event)"
+  [emailId]="emailId"
+  [factory_list]="factory_list"
+  [username]="username"
+  [isShowPop]="isShowPop"
+></app-otp-config>
+<app-register
+  (cancel)="cancelRegistration($event)"
+  [isShowPop]="isEmailPop"
+></app-register>

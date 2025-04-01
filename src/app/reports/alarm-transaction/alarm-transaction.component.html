@@ -1,0 +1,56 @@
+<div nz-row>
+    <nz-page-header-title>Alarm Transaction</nz-page-header-title>
+  </div>
+  <ng-template #indicatorTemplate
+    ><img class="spin-logo" src="assets/system_image/process.gif" />
+  </ng-template>
+  <nz-spin
+    [nzSpinning]="loader"
+    [nzIndicator]="indicatorTemplate"
+    nzTip="Loading..."
+  >
+    <div nz-row>
+      <div nz-col nzSpan="24">
+        <button
+          nz-button
+          class="button-align"
+          nzType="primary"
+          [attr.disabled]="access_type"
+        >
+        Export Alarm Transaction<!-- {{ toggleEventCreate ? "" : "Create Category Config" }} -->
+        </button>
+        <input
+          class="search-box"
+          nz-input
+          placeholder="Search"
+          [(ngModel)]="searchText"
+        />
+      </div>
+    </div>
+    <div nz-row class="table-spaces">
+      <nz-table #basicTable [nzData]="data" nzTableLayout="fixed">
+        <thead>
+          <tr>
+            <th *ngFor="let column of listOfColumn">
+              {{ column }}
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of data">
+            <td>{{ data.email_id }}</td>
+            <td>{{ data.first_name }}</td>
+            <td>{{ data.last_name }}</td>
+            <td>{{ data.role }}</td>
+            <td>{{ data.phone_number }}</td>
+            <td>{{ data.status }}</td>
+            <td>{{ data.created_by }}</td>
+            <td>{{ data.created_date }}</td>
+            <td>{{ data.last_updated_by }}</td>
+            <td>{{ data.last_updated_date }}</td>
+          </tr>
+        </tbody>
+      </nz-table>
+    </div>
+  </nz-spin>
+  

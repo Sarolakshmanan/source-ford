@@ -1,0 +1,68 @@
+<ng-container *ngIf="!notFound && screenPrivacy == 'private'">
+  <nz-layout class="slider-height">
+    <nz-sider
+      [nzWidth]="240"
+      nzCollapsible
+      [(nzCollapsed)]="isCollapsed"
+      [nzTrigger]="null"
+    >
+      <div *ngIf="!isCollapsed" class="logo"></div>
+      <div *ngIf="isCollapsed" class="mini-logo"></div>
+      <ul nz-menu nzTheme="dark" nzMode="inline">
+        <ng-container *ngFor="let val of sideMenu">
+          <li
+            *ngIf="val.children.length != 0"
+            nz-submenu
+            [nzOpen]="val.selected"
+            nzTitle="{{ val.label }}"
+            title="{{ val.label }}"
+            nzIcon="user"
+          >
+            <ul>
+              <li
+                (click)="routerNavigation(innerVal.url)"
+                nz-menu-item
+                [nzSelected]="innerVal.selected"
+                *ngFor="let innerVal of val.children"
+              >
+                <span nz-icon>
+                  <img
+                    class="side-menu-image inner-side-menu"
+                    src="{{ innerVal.icon }}"
+                  />
+                </span>
+                {{ innerVal.label }}
+              </li>
+            </ul>
+          </li>
+          <li
+            nz-menu-item
+            title="{{ val.label_name }}"
+            *ngIf="val.children.length == 0"
+            [nzSelected]="val.selected"
+            (click)="routerNavigation(val.url)"
+          >
+            <span nz-icon nzType="{{ val.blob_path }}"></span>
+            <span>{{ val.label_name }}</span>
+          </li>
+        </ng-container>
+      </ul>
+    </nz-sider>
+    <nz-layout>
+      <app-header [menu_list]="menuLabel" [userInfo]="userdata"></app-header>
+      <nz-content>
+        <div class="inner-content">
+          <ng-content *ngTemplateOutlet="contenttmpl"></ng-content>
+        </div>
+      </nz-content>
+      <app-footer [factoryList]="factoryInfo"></app-footer>
+    </nz-layout>
+  </nz-layout>
+</ng-container>
+<ng-container *ngIf="notFound">
+  <app-pagenotfound></app-pagenotfound>
+</ng-container>
+<ng-container *ngIf="!notFound && screenPrivacy == 'public'">
+  <ng-content *ngTemplateOutlet="contenttmpl"></ng-content>
+</ng-container>
+<ng-template #contenttmpl><ng-content></ng-content></ng-template>

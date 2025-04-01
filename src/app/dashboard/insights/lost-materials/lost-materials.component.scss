@@ -1,0 +1,39 @@
+/* Lost Items Table Specific Styles */
+.lost-items-table {
+    th {
+      &:nth-child(6), &:nth-child(7) { // Value and Status columns
+        text-align: right;
+      }
+    }
+    
+    td {
+      &:nth-child(6) { // Value column
+        text-align: right;
+        font-family: 'Courier New', monospace;
+        font-weight: 500;
+      }
+      
+      &:nth-child(7) { // Status column
+        text-align: center;
+      }
+    }
+  }
+  
+  /* Additional Status Tag Colors */
+  .ant-tag-orange {
+    background-color: #fff7e6;
+    border-color: #ffd591;
+    color: #fa8c16;
+  }
+  
+  .ant-tag-red {
+    background-color: #fff1f0;
+    border-color: #ffa39e;
+    color: #f5222d;
+  }
+  
+  .ant-tag-green {
+    background-color: #f6ffed;
+    border-color: #b7eb8f;
+    color: #52c41a;
+  }

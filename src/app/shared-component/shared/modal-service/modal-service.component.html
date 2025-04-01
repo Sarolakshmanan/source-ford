@@ -1,0 +1,12 @@
+<nz-modal
+  [(nzVisible)]="isVisible"
+  (nzOnCancel)="handleCancel()"
+  nzMaskClosable="false"
+  nzClosable="false"
+  nzFooter="false"
+>
+  <div *nzModalContent>
+    <ng-content></ng-content>
+  </div>
+  <div *nzModalFooter></div>
+</nz-modal>

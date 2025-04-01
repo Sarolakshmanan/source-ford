@@ -1,0 +1,139 @@
+<nz-modal
+  [(nzVisible)]="isVisible"
+  (nzOnCancel)="handleCancel()"
+  nzMaskClosable="false"
+  nzClosable="false"
+  nzFooter="false"
+>
+  <div *nzModalContent>
+    <img class="logo-sell" src="assets/system_image/logo_mini.png" alt="logo" />
+    <h3 class="text-spacing">Hi, {{ username }}</h3>
+    <h4 class="text-spacing">{{ emailId }} <a (click)="logout()">Logout</a></h4>
+    <ng-container *ngIf="otp_verify">
+      <div nz-row [nzGutter]="16" class="text-margin">
+        <div nz-col class="gutter-row" [nzSpan]="6">
+          <div class="inner-box"></div>
+        </div>
+        <div nz-col class="gutter-row" [nzSpan]="3">
+          <div class="inner-box">
+            <input
+              maxlength="1"
+              type="password"
+              nz-input
+              [(ngModel)]="securityPin.one"
+              class="input-borderless"
+            />
+          </div>
+        </div>
+        <div nz-col class="gutter-row" [nzSpan]="3">
+          <div class="inner-box">
+            <input
+              maxlength="1"
+              nz-input
+              type="password"
+              [(ngModel)]="securityPin.two"
+              class="input-borderless"
+            />
+          </div>
+        </div>
+        <div nz-col class="gutter-row" [nzSpan]="3">
+          <div class="inner-box">
+            <input
+              maxlength="1"
+              nz-input
+              type="password"
+              [(ngModel)]="securityPin.three"
+              class="input-borderless"
+            />
+          </div>
+        </div>
+        <div nz-col class="gutter-row" [nzSpan]="3">
+          <div class="inner-box">
+            <input
+              maxlength="1"
+              nz-input
+              type="password"
+              [(ngModel)]="securityPin.four"
+              class="input-borderless"
+            />
+          </div>
+        </div>
+        <div nz-col class="gutter-row" [nzSpan]="6">
+          <div class="inner-box"></div>
+        </div>
+      </div>
+      <div nz-row [nzGutter]="16" class="text-margin">
+        <div nz-col class="gutter-row" [nzSpan]="7">
+          <div class="inner-box"></div>
+        </div>
+        <div nz-col class="gutter-row" [nzSpan]="12">
+          <button
+            nz-button
+            (click)="verifyPin($event)"
+            [nzLoading]="isOtpLoading"
+            class="otp-verify-button"
+            nzType="primary"
+          >
+            Verify Otp
+          </button>
+        </div>
+      </div>
+      <h5 class="text-spacing text-margin">Please Enter PADCO PIN here</h5>
+      <h5 class="text-spacing"><a>Forgot PADCO PIN?</a></h5>
+    </ng-container>
+    <ng-container *ngIf="newPassword">
+      <div nz-row [nzGutter]="16" class="text-margin">
+        <div nz-col class="gutter-row" [nzSpan]="4">
+          <div class="inner-box"></div>
+        </div>
+        <div nz-col class="gutter-row" [nzSpan]="6">
+          <div class="inner-box new-alignment">
+            <h4>New Password</h4>
+          </div>
+        </div>
+        <div nz-col class="gutter-row" [nzSpan]="10">
+          <div class="inner-box">
+            <input nz-input type="text" class="input-borderless" />
+          </div>
+        </div>
+      </div>
+      <div nz-row [nzGutter]="16" class="text-margin">
+        <div nz-col class="gutter-row" [nzSpan]="2">
+          <div class="inner-box"></div>
+        </div>
+        <div nz-col class="gutter-row" [nzSpan]="8">
+          <div class="inner-box new-alignment">
+            <h4>Confirm Password</h4>
+          </div>
+        </div>
+        <div nz-col class="gutter-row" [nzSpan]="10">
+          <div class="inner-box new-alignment">
+            <input nz-input type="text" class="input-borderless" />
+          </div>
+        </div>
+      </div>
+      <div nz-row [nzGutter]="16" class="text-margin">
+        <div nz-col class="gutter-row" [nzSpan]="20">
+          <button
+            nz-button
+            class="proceed-align"
+            (click) = "proceedIn()"
+            [nzSize]="'default'"
+            nzType="primary"
+          >
+            Proceed to Login
+          </button>
+          <button
+            nz-button
+            class="change-password"
+            [nzSize]="'default'"
+            nzType="primary"
+          >
+            Change Password
+          </button>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+  <div *nzModalFooter></div>
+</nz-modal>

@@ -1,0 +1,32 @@
+<ng-template #indicatorTemplate
+  ><img class="spin-logo" src="assets/system_image/process.gif" />
+</ng-template>
+<nz-spin
+  [nzSpinning]="loader"
+  [nzIndicator]="indicatorTemplate"
+  nzTip="Loading..."
+>
+  <div nz-row class="widget-alignment">
+    <div nz-col nzSpan="24">
+      <app-graph></app-graph>
+    </div>
+  </div>
+  <div nz-row class="widget-alignment">
+    <div nz-col nzSpan="24">
+      <app-non-returned-material></app-non-returned-material>
+    </div>
+  </div>
+  <div nz-row class="widget-alignment">
+    <div nz-col nzSpan="12">
+      <app-available-stocks></app-available-stocks>
+    </div>
+    <div nz-col nzSpan="12">
+      <app-stock-transaction></app-stock-transaction>
+    </div>
+  </div>
+  <div nz-row class="widget-alignment">
+    <div nz-col nzSpan="24">
+      <app-damaged-list></app-damaged-list>
+    </div>
+  </div>
+</nz-spin>

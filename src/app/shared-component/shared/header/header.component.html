@@ -1,0 +1,68 @@
+<nz-header>
+  <div nz-row>
+    <div nz-col [nzSpan]="2">
+      <i
+        class="trigger"
+        nz-icon
+        [nzType]="isCollapsed ? 'menu-fold' : 'menu-unfold'"
+        (click)="toggleslider()"
+      ></i>
+    </div>
+    <div nz-col [nzSpan]="22">
+      <span nz-dropdown [nzDropdownMenu]="profileMenu" class="profile-name">{{
+        userName
+      }}</span>
+      <nz-dropdown-menu #profileMenu="nzDropdownMenu">
+        <ul nz-menu nzMode="horizontal">
+          <li nz-menu>
+            <ul *ngFor="let val of menu_list">
+              <li nz-menu-item>{{ val }}</li>
+            </ul>
+          </li>
+        </ul>
+      </nz-dropdown-menu>
+      <img nz-image nzSrc="{{ profilePic }}" alt="" class="profile-img" />
+      <nz-badge
+        class="notification-alert-space"
+        [nzCount]="6"
+        [nzOverflowCount]="5"
+      >
+        <i
+          nz-icon
+          nzType="bell"
+          (click)="NotificationOpen()"
+          [nzTwotoneColor]="'#eb2f96'"
+          class="notification-alert"
+          nzTheme="outline"
+        ></i>
+      </nz-badge>
+      <!-- drawer for the notification -->
+      <nz-drawer
+        [nzClosable]="true"
+        [nzVisible]="visible"
+        [nzPlacement]="placement"
+        nzTitle="Notifications"
+        [nzFooter]="'view all'"
+        [nzWidth]="400"
+        [nzKeyboard]="true"
+        (nzOnClose)="Notificationclose()"
+      >
+        <ng-container *nzDrawerContent>
+          <p>Some contents...</p>
+          <p>Some contents...</p>
+          <p>Some contents...</p>
+        </ng-container>
+      </nz-drawer>
+      <i
+        nz-icon
+        nzType="home"
+        [nzTwotoneColor]="'#025f97'"
+        class="dashboard-alert"
+        [nzTheme]="'twotone'"
+        nz-tooltip
+        nzTooltipTitle="Dashboard"
+        nzTooltipPlacement="bottomLeft"
+      ></i>
+    </div>
+  </div>
+</nz-header>

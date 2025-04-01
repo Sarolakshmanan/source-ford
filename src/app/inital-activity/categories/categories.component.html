@@ -1,0 +1,117 @@
+<nz-row class="header">
+    <nz-col [nzSpan]="12" class="right">
+        <div nz-row nzAlign="middle" class="datetime-container">
+            <nz-col [nzSpan]="9" class="date">
+                <span>
+                    <i nz-icon nzType="calendar" class="order-receipt-icon" nz-tooltip nzTooltipPlacement="topCenter"
+                        nzTheme="twotone"></i>&nbsp;{{ currentDate }}</span>
+            </nz-col>
+            <nz-col [nzSpan]="1" class="separator">
+                <span>-</span>
+            </nz-col>
+            <nz-col [nzSpan]="6" class="time">
+                <span>
+                    <i nz-icon nzType="clock-circle" class="order-receipt-icon" nz-tooltip
+                        nzTooltipPlacement="topCenter" nzTheme="twotone"></i>&nbsp;{{ currentTime }}</span>
+            </nz-col>
+        </div>
+    </nz-col>
+    <nz-col [nzSpan]="12">
+        <nz-row>
+            <nz-col [nzSpan]="13"></nz-col>
+            <nz-col [nzSpan]="6" style="text-align: -webkit-right;">
+                <button nz-button nzType="default" class="return-btn" (click)="showModal()">
+                    <span class="dot-info"></span> Return
+                    <i nz-icon nzType="rollback" nzTheme="outline"></i>
+                </button>
+            </nz-col>
+            <nz-col [nzSpan]="5" style="text-align: -webkit-right;">
+                <button nz-button nzType="default" class="close-order-btn" (click)="showLogin()">
+                    <span class="dot"></span> Login
+                    <i nz-icon nzType="poweroff" nzTheme="outline"></i>
+                </button>
+            </nz-col>
+        </nz-row>
+    </nz-col>
+</nz-row>
+<div class="scroll-menu">
+    <div class="scroll-menu-content">
+        <nz-col [nzSpan]="4" *ngFor="let item of categories" class="custom-col">
+            <nz-card class="menu-card">
+                <p>Card content</p>
+                <p>{{ item.name }}</p>
+                <p>{{ item.item_value }} items</p>
+            </nz-card>
+        </nz-col>
+    </div>
+</div>
+<div class="search-container">
+    <nz-input-group [nzSuffix]="suffixIcon" class="input-group">
+        <input nz-input placeholder="Search what's on your mind..." style="padding-left: 10px;" />
+    </nz-input-group>
+    <ng-template #suffixIcon>
+        <i nz-icon nzType="search" class="search-icon"></i>
+    </ng-template>
+</div>
+<div class="scroll-container">
+    <div class="scroll-content">
+        <nz-row [nzGutter]="10">
+            <nz-col *ngFor="let product of products" [nzSpan]="6" class="custom-col-product">
+                <div class="card-container">
+                    <nz-card class="custom-card" [nzBodyStyle]="{ padding: '10px' }" (click)="showModalMiddle(product)">
+                        <div class="image-container">
+                            <img [src]="product.image" class="product-image" style="width: 100%;" />
+                        </div>
+                        <p>{{ product.name }}</p>
+                        <div class="card-footer">
+                            <span class="product-description">{{ product.description.length > 25 ? (product.description
+                                | slice:0:25) + '...' : product.description }}</span>
+                            <span class="product-price">{{ product.price | currency }}</span>
+                        </div>
+                    </nz-card>
+                </div>
+            </nz-col>
+        </nz-row>
+    </div>
+</div>
+
+<nz-modal [(nzVisible)]="isproduct" nzTitle="Product Detail" [nzFooter]="null" (nzOnCancel)="handleCancel('product')">
+    <ng-container *nzModalContent>
+        <div class="modal-content" *ngIf="selectedProduct">
+            <div class="image-container">
+                <img [src]="selectedProduct.image" [alt]="selectedProduct.name" />
+            </div>
+
+            <div class="product-info">
+                <span class="category">{{ selectedProduct.category }}</span>
+                <h3>{{ selectedProduct.name }}</h3>
+                <p class="description">{{ selectedProduct.description }}</p>
+                <h2 class="price">{{ selectedProduct.price | currency }}</h2>
+
+                <nz-input-group>
+                    <textarea nz-input class="notes-input" placeholder="Add notes to your order..."></textarea>
+                </nz-input-group>
+
+                <div class="quantity-container">
+                    <button nz-button nzType="default" class="qty-btn" style="padding: 0px 12px;"
+                        [disabled]="quantity <= 1" (click)="decreaseQty()">-</button>
+                    <span>{{ quantity }}</span>
+                    <button nz-button nzType="default" class="qty-btn" [disabled]="quantity <= 1"
+                        (click)="increaseQty()">+</button>
+                </div>
+
+                <button class="cart-btn" (click)="addToCart(selectedProduct)">
+                    Add to Cart ({{ (selectedProduct.price * quantity) | currency }})
+                </button>
+            </div>
+        </div>
+    </ng-container>
+</nz-modal>
+
+<nz-modal [(nzVisible)]="isTable" [nzWidth]="'100vw'" [nzFooter]="null" (nzOnCancel)="handleCancel('table')">
+    <ng-container *nzModalContent>
+        <div class="modal-content">
+            <app-return-products></app-return-products>
+        </div>
+    </ng-container>
+</nz-modal>

@@ -1,0 +1,56 @@
+<div class="modal-header">
+    <button
+          nz-button
+          class="button-align"
+          (click)="addRow()"
+          nzType="primary"
+        >Add Row
+        </button>
+</div>
+<div class="scroll-container">
+    <div class="scroll-content">
+        <div nz-row class="table-spaces" *ngIf="!toggleEventCreate">
+            <nz-table #basicTable [nzData]="data" nzTableLayout="fixed" style="margin-top: 10px;">
+                <thead>
+                    <tr>
+                        <th *ngFor="let column of listOfColumn">
+                            {{ column }}
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let data of data;let x = index">
+                        <td>
+                            <button class="delete-btn" (click)="deleteRow(x)">
+                                <i nz-icon nzType="delete" class="svgIcon" nzTheme="outline"></i>
+                            </button>
+                            <!-- <button nz-button class="delete-btn" (click)="deleteRow(x)">
+                        <i nz-icon nzType="plus" nzTheme="outline"></i>Delete Row</button> -->
+                        </td>
+                        <td>{{ x+1 }}</td>
+                        <td>
+                            <nz-form-control nzErrorTip="Please input Item Code!">
+                                <input #itemCodeInput id="item_code" formControlName="name" nz-input
+                                    placeholder="Item Code" />
+                            </nz-form-control>
+                        </td>
+                        <td>
+                            <nz-form-control nzErrorTip="Please input Reason!">
+                                <input formControlName="name" nz-input placeholder="Reason" />
+                            </nz-form-control>
+                        </td>
+                        <td style="width: 100%;">
+                            <nz-select formControlName="damaged" class="select-width" [nzMaxTagCount]="5"
+                                nzMode="multiple" nzPlaceHolder="Please select Damaged Product"
+                                [(ngModel)]="listOfSelectedValue"
+                                (ngModelChange)="onSelectionChange($event)">
+                                <nz-option *ngFor="let item of listOfOption" [nzLabel]="item"
+                                    [nzValue]="item"></nz-option>
+                            </nz-select>
+                        </td>
+                    </tr>
+                </tbody>
+            </nz-table>
+        </div>
+    </div>
+</div>

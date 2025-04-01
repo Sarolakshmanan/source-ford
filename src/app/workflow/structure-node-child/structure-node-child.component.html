@@ -1,0 +1,23 @@
+<div
+  id="{{ node.id }}"
+  class="workflow-node node"
+  (dragover)="onDragOver($event)"
+  (dragstart)="onDragOver($event)"
+  draggable="true"
+  (dblclick)="respectiveDicision($event, node)"
+>
+  <!-- <p>{{ node.name }}</p> -->
+  <img class="workflow-img" [src]="node.image" alt="" />
+  <!-- <input
+    class="checkbox-node"
+    (change)="StatusMarker($event, node)"
+    type="checkbox"
+  />
+  <span
+    (click)="removeNode($event, node)"
+    class="remove-icon"
+    nz-icon
+    nzType="close"
+    nzTheme="outline"
+  ></span> -->
+</div>
